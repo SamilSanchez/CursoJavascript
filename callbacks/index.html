@@ -1,0 +1,49 @@
+<!--
+sincronos:
+
+- ejecuta linea por linea
+
+asincronos:
+
+ejemplo:
+- peticion a Api
+- setTimeout
+- setInterval
+
+ -->
+
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Callbacks</title>
+   </head>
+   <body>
+     <h1 id="agenda"> Estoy despertando</h1>
+     <script type="text/javascript">
+       const DESPERTAR  = 3000
+       const DUCHA = 2000
+       const VESTIRSE = 2000
+       const DESAYUNAR = 3000
+       const PLATZI = 5000
+       const $agenda = document.getElementById('agenda')
+
+       setTimeout(function () {
+         $agenda.textContent = 'Ahora me estoy duchando...'
+         setTimeout(function () {
+           $agenda.textContent = 'Me estoy vistiendo...'
+           setTimeout(function () {
+             $agenda.textContent = 'Ahora estoy desayunando...'
+             setTimeout(function () {
+               $agenda.textContent = 'Que lindo es estudiar...'
+               setTimeout(function () {
+                 $agenda.textContent = 'Y javascript es mi lenguaje favorito <3...'
+               }, PLATZI);
+             }, DESAYUNAR);
+           }, VESTIRSE);
+         }, DUCHA);
+       }, DESPERTAR);
+
+     </script>
+   </body>
+ </html>

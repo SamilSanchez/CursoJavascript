@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>serInterval</title>
+  </head>
+  <body>
+    <div class="">
+      <h1 id="timer"> Ha pasado 0 segundos</h1>
+      <button id="cancel-buttom"> Cancel</button>
+    </div>
+    <script type="text/javascript">
+    // setInterval (que vamos a hacer?, en cuanto debo hacerlo)
+    const timer = document.getElementById('timer')
+    let counter = 0
+
+    const interval = setInterval(function () {
+      //counter = counter + 1
+      counter++
+      // timer.textContent = 'ha pasado' + counter + 'segundos'
+      timer.textContent = `han pasado ${counter} segundos`
+      // console.log('han pasado 1 segundo')
+    }, 1000);
+
+    const $cancelButtom = document.getElementById('cancel-buttom')
+
+    $cancelButtom.addEventListener('click', () => {
+      clearInterval(interval)
+    })
+
+    </script>
+  </body>
+</html>
