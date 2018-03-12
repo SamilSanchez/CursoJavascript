@@ -1,0 +1,51 @@
+<!-- Otra solucion de fibonacci con iteradores
+
+los iteradores nos permiten hacer listas infinitas de elementos
+
+los iteradores deben tern un artributo llamado next que es una funcion que
+nos devuelve un valor
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Iteradores</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    function fibonacci() {
+      let a = 0, b = 1
+      return {
+        next: function () {
+          let f = a
+          a = b
+          b = f + a
+          return {
+            value: f,
+            done: false
+          }
+        }
+      }
+    }
+
+    // Forma 1
+    const fibo1 = fibonacci()
+    fibo1.next().value // 0
+
+    // Forma 2
+    const fibo2 = {}
+    // Symbol.iterator es propio de javascript y se coloca para que sepa que es un iterador
+    fibo2[Symbol.iterator] = fibonacci
+    console.log('fibo2', fibo2);
+    let i = 0
+    for (let value of fibo2) {
+      console.log('value', value);
+      i++
+      if (i > 20) break
+    }
+
+    </script>
+  </body>
+</html>

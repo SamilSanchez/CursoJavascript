@@ -13,6 +13,7 @@
   <body>
 
     <h1 id="agenda"> Estoy despertando</h1>
+
     <script type="text/javascript">
       const DESPERTAR  = 3000
       const DUCHA = 2000
@@ -20,6 +21,29 @@
       const DESAYUNAR = 3000
       const PLATZI = 5000
       const $agenda = document.getElementById('agenda')
+
+      // const despertar = new Promise(function(todo esta ok, todo esta mal) {
+      //
+      // });
+
+      const despertar = new Promise(function(resolve, reject) {
+        setTimeout(function () {
+          reject('Ahora me estoy duchando...')
+        }, DESPERTAR);
+      });
+
+      // despertar.then( que quiero hacer si todo esta ok)
+
+      despertar
+      .then(function (message) {
+        console.log(message);
+      })
+
+      // despertar.catch( que quiero hacer si todo esta mal)
+
+      .catch(function (message) {
+        console.log(message);
+      })
 
     </script>
 

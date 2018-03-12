@@ -1,0 +1,76 @@
+<!-- Promesas
+  Son introducidas en emascript 6
+  puede ejecutar codigo que puede ser sicrono o asincrono,
+  que te devuelve una respuesta de que si se ejecuto o no se ejecuto.
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Promesas</title>
+  </head>
+  <body>
+
+    <h1 id="agenda"> Estoy despertando</h1>
+
+    <script type="text/javascript">
+
+      const DESPERTAR  = 3000
+      const DUCHA = 2000
+      const VESTIRSE = 2000
+      const DESAYUNAR = 3000
+      const PLATZI = 5000
+      const $agenda = document.getElementById('agenda')
+
+      function despertar() {
+        return new Promise(function(resolve, reject) {
+          setTimeout(function () {
+            resolve('Ahora me estoy duchando')
+          }, DESPERTAR);
+        });
+      }
+
+      function ducha(menssage) {
+        $agenda.textContent = menssage
+        return new Promise(function(resolve, reject) {
+          setTimeout(function () {
+            resolve('Me estoy vistiendo...')
+          }, DUCHA);
+        });
+      }
+
+      function vertirme(menssage) {
+        $agenda.textContent = menssage
+        return new Promise(function(resolve, reject) {
+          setTimeout(function () {
+            reject('No hay comida')
+            //resolve('Ahora me estoy desayunando...')
+          }, VESTIRSE);
+        });
+      }
+
+      function desayunar(menssage) {
+        $agenda.textContent = menssage
+        return new Promise(function(resolve, reject) {
+          setTimeout(function () {
+            resolve('Estoy estudiando...')
+          }, DESAYUNAR);
+        });
+      }
+
+      function error(menssage) {
+        $agenda.style.color = 'red'
+        $agenda.textContent = menssage
+      }
+
+      despertar()
+      .then(ducha)
+      .then(vertirme)
+      .then(desayunar)
+      .catch(error)
+
+    </script>
+
+  </body>
+</html>
